@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js Components Page</title>
+    <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🧩 Vue.js Components Showcase</h1>
+        <a href="{{ path('index') }}">← Back to Home</a>
+        
+        <div data-vue-app="Counter"></div>
+        <div data-vue-app="UserList"></div>
+        <div data-vue-app="Counter"></div> <!-- Можно использовать несколько раз -->
+    </div>
+
+    {{ encore_entry_script_tags('vue_components') }}
+</body>
+</html>
