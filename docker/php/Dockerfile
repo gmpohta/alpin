@@ -8,6 +8,8 @@ RUN set -eux && \
     apk del && \
     rm -rf /var/lib/apt/lists/*
 
+RUN apk add --no-cache nodejs-current npm
+
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 RUN chmod +x /usr/local/bin/install-php-extensions && \
     install-php-extensions @composer opcache pdo_pgsql pgsql intl pcov pcntl sockets redis imagick gd zip && \
@@ -22,6 +24,7 @@ RUN addgroup -g 1000 phpgroup && \
 
 RUN mkdir /var/run/php && \
     chown -R phpuser:phpgroup /var/run/php && \
-    chown -R phpuser:phpgroup /var/www/html
+    chown -R phpuser:phpgroup /var/www/html && \
+    chown -R phpuser:phpgroup /usr/bin/node
 
 USER phpuser
